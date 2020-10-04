@@ -1,10 +1,13 @@
 import React from "react";
 import MyRouter from "./Router";
+import { authService } from "fb";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(!!authService.currentUser);
+
   return (
     <div>
-      <MyRouter />
+      <MyRouter isLoggedIn={isLoggedIn} />
     </div>
   );
 }
