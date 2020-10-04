@@ -4,9 +4,6 @@ import { Button, TextField, makeStyles } from "@material-ui/core";
 import { authService } from "fb";
 
 const useStyles = makeStyles({
-  root: {
-    padding: 30,
-  },
   field: {
     marginRight: 15,
   },
@@ -20,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Auth = () => {
+const EmailSignIn = () => {
   const { register, handleSubmit } = useForm();
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [isNewAccount, setIsNewAccount] = React.useState(true);
@@ -42,7 +39,7 @@ const Auth = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       <h3>{isNewAccount ? "Sign up" : "Sign in"}</h3>
       <form>
         <div className={classes.fieldWrapper}>
@@ -80,4 +77,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default EmailSignIn;
