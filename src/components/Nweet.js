@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField } from "@material-ui/core";
-import { dbService } from "fb";
+import { dbService, storageService } from "fb";
 import { useForm } from "react-hook-form";
 
 const Nweet = ({ nweet, isAuthor }) => {
@@ -8,6 +8,9 @@ const Nweet = ({ nweet, isAuthor }) => {
   const [isEditing, setIsEditing] = React.useState(false);
   const handleDelete = async () => {
     await dbService.doc(`nweets/${nweet?.id}`).delete();
+    if (nweet?.photo) {
+      await storageService.refFromURL(nweet?.photo).delete();
+    }
   };
   const handleUpdate = async (data) => {
     setIsEditing((prev) => !prev);
@@ -29,6 +32,9 @@ const Nweet = ({ nweet, isAuthor }) => {
           />
         ) : (
           nweet?.text
+        )}
+        {nweet?.photo && (
+          <img src={nweet?.photo} width={50} height={50} alt="nweet" />
         )}
         {isAuthor && (
           <>
