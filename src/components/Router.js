@@ -5,7 +5,7 @@ import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Auth from "routes/Auth";
 
-const MyRouter = ({ isLoggedIn }) => {
+const MyRouter = ({ isLoggedIn, viewer }) => {
   return (
     <Router>
       <Switch>
@@ -13,7 +13,7 @@ const MyRouter = ({ isLoggedIn }) => {
           {isLoggedIn ? <Navigation /> : <Auth />}
         </Route>
         <Route exact path="/home">
-          <Home />
+          <Home viewer={viewer} />
         </Route>
         <Route exact path="/profile">
           <Profile />
