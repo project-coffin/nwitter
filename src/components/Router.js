@@ -10,13 +10,13 @@ const MyRouter = ({ isLoggedIn, viewer }) => {
     <Router>
       <Switch>
         <Route exact path="/">
-          {isLoggedIn ? <Navigation /> : <Auth />}
+          {isLoggedIn ? <Navigation viewer={viewer} /> : <Auth />}
         </Route>
         <Route exact path="/home">
           <Home viewer={viewer} />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile viewer={viewer} />
         </Route>
       </Switch>
     </Router>
